@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["I3BarBlockAlign","I3BarBlockMinWidth"],"struct":["I3BarBlock"]};

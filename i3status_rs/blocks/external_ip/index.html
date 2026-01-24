@@ -1,0 +1,49 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="External IP address and various information about it"><title>i3status_rs::blocks::external_ip - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-ca0dd0c4.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="i3status_rs" data-themes="" data-resource-suffix="" data-rustdoc-version="1.93.0 (254b59607 2026-01-19)" data-channel="1.93.0" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-a3946164.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-a410ff4d.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-263c88ec.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module external_ip</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../i3status_rs/index.html">i3status_<wbr>rs</a><span class="version">0.35.0</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module external_<wbr>ip</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#configuration" title="Configuration">Configuration</a></li><li><a href="#example" title="Example">Example</a></li><li><a href="#notes" title="Notes">Notes</a></li></ul><h3><a href="#structs">Module Items</a></h3><ul class="block"><li><a href="#structs" title="Structs">Structs</a></li><li><a href="#functions" title="Functions">Functions</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In i3status_<wbr>rs::<wbr>blocks</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">i3status_rs</a>::<wbr><a href="../index.html">blocks</a></div><h1>Module <span>external_<wbr>ip</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/i3status_rs/blocks/external_ip.rs.html#1-219">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>External IP address and various information about it</p>
+<h2 id="configuration"><a class="doc-anchor" href="#configuration">§</a>Configuration</h2><div><table><thead><tr><th>Key</th><th>Values</th><th>Default</th></tr></thead><tbody>
+<tr><td><code>format</code></td><td>A string to customise the output of this block. See below for available placeholders.</td><td><code>" $ip $country_flag "</code></td></tr>
+<tr><td><code>interval</code></td><td>Interval in seconds for automatic updates</td><td><code>300</code></td></tr>
+<tr><td><code>with_network_manager</code></td><td>If ‘true’, listen for NetworkManager events and update the IP immediately if there was a change</td><td><code>true</code></td></tr>
+<tr><td><code>use_ipv4</code></td><td>If ‘true’, use IPv4 for obtaining all info</td><td><code>false</code></td></tr>
+</tbody></table>
+</div><div><table><thead><tr><th>Key</th><th>Value</th><th>Type</th><th>Unit</th></tr></thead><tbody>
+<tr><td><code>ip</code></td><td>The external IP address, as seen from a remote server</td><td>Text</td><td>-</td></tr>
+<tr><td><code>version</code></td><td>IPv4 or IPv6</td><td>Text</td><td>-</td></tr>
+<tr><td><code>city</code></td><td>City name, such as “San Francisco”</td><td>Text</td><td>-</td></tr>
+<tr><td><code>region</code></td><td>Region name, such as “California”</td><td>Text</td><td>-</td></tr>
+<tr><td><code>region_code</code></td><td>Region code, such as “CA” for California</td><td>Text</td><td>-</td></tr>
+<tr><td><code>country</code></td><td>Country code (2 letter, ISO 3166-1 alpha-2)</td><td>Text</td><td>-</td></tr>
+<tr><td><code>country_name</code></td><td>Short country name</td><td>Text</td><td>-</td></tr>
+<tr><td><code>country_code</code></td><td>Country code (2 letter, ISO 3166-1 alpha-2)</td><td>Text</td><td>-</td></tr>
+<tr><td><code>country_code_iso3</code></td><td>Country code (3 letter, ISO 3166-1 alpha-3)</td><td>Text</td><td>-</td></tr>
+<tr><td><code>country_capital</code></td><td>Capital of the country</td><td>Text</td><td>-</td></tr>
+<tr><td><code>country_tld</code></td><td>Country specific TLD (top-level domain)</td><td>Text</td><td>-</td></tr>
+<tr><td><code>continent_code</code></td><td>Continent code</td><td>Text</td><td>-</td></tr>
+<tr><td><code>in_eu</code></td><td>Region code, such as “CA”</td><td>Flag</td><td>-</td></tr>
+<tr><td><code>postal</code></td><td>ZIP / Postal code</td><td>Text</td><td>-</td></tr>
+<tr><td><code>latitude</code></td><td>Latitude</td><td>Number</td><td>- (TODO: make degrees?)</td></tr>
+<tr><td><code>longitude</code></td><td>Longitude</td><td>Number</td><td>- (TODO: make degrees?)</td></tr>
+<tr><td><code>timezone</code></td><td>City</td><td>Text</td><td>-</td></tr>
+<tr><td><code>utc_offset</code></td><td>UTC offset (with daylight saving time) as +HHMM or -HHMM (HH is hours, MM is minutes)</td><td>Text</td><td>-</td></tr>
+<tr><td><code>country_calling_code</code></td><td>Country calling code (dial in code, comma separated)</td><td>Text</td><td>-</td></tr>
+<tr><td><code>currency</code></td><td>Currency code (ISO 4217)</td><td>Text</td><td>-</td></tr>
+<tr><td><code>currency_name</code></td><td>Currency name</td><td>Text</td><td>-</td></tr>
+<tr><td><code>languages</code></td><td>Languages spoken (comma separated 2 or 3 letter ISO 639 code with optional hyphen separated country suffix)</td><td>Text</td><td>-</td></tr>
+<tr><td><code>country_area</code></td><td>Area of the country (in sq km)</td><td>Number</td><td>-</td></tr>
+<tr><td><code>country_population</code></td><td>Population of the country</td><td>Number</td><td>-</td></tr>
+<tr><td><code>timezone</code></td><td>Time zone</td><td>Text</td><td>-</td></tr>
+<tr><td><code>org</code></td><td>Organization</td><td>Text</td><td>-</td></tr>
+<tr><td><code>asn</code></td><td>Autonomous system (AS)</td><td>Text</td><td>-</td></tr>
+<tr><td><code>country_flag</code></td><td>Flag of the country</td><td>Text (glyph)</td><td>-</td></tr>
+</tbody></table>
+</div><h2 id="example"><a class="doc-anchor" href="#example">§</a>Example</h2><div class="example-wrap"><pre class="language-toml"><code>[[block]]
+block = &quot;external_ip&quot;
+format = &quot; $ip $country_code &quot;</code></pre></div><h2 id="notes"><a class="doc-anchor" href="#notes">§</a>Notes</h2>
+<p>All the information comes from <a href="https://ipapi.co/json/">https://ipapi.co/json/</a>
+Check their documentation here: <a href="https://ipapi.co/api/#complete-location5">https://ipapi.co/api/#complete-location5</a></p>
+<p>The IP is queried, 1) When i3status-rs starts, 2) When a signal is received
+on D-Bus about a network configuration change, 3) Every 5 minutes. This
+periodic refresh exists to catch IP updates that don’t trigger a notification,
+for example due to a IP refresh at the router.</p>
+<p>Flags: They are not icons but unicode glyphs. You will need a font that
+includes them. Tested with: <a href="https://www.babelstone.co.uk/Fonts/Flags.html">https://www.babelstone.co.uk/Fonts/Flags.html</a></p>
+</div></details><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.Config.html" title="struct i3status_rs::blocks::external_ip::Config">Config</a></dt></dl><h2 id="functions" class="section-header">Functions<a href="#functions" class="anchor">§</a></h2><dl class="item-table"><dt><a class="fn" href="fn.run.html" title="fn i3status_rs::blocks::external_ip::run">run</a></dt></dl></section></div></main></body></html>

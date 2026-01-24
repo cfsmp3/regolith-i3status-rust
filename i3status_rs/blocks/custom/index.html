@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="The output of a custom shell command"><title>i3status_rs::blocks::custom - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-ca0dd0c4.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="i3status_rs" data-themes="" data-resource-suffix="" data-rustdoc-version="1.93.0 (254b59607 2026-01-19)" data-channel="1.93.0" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-a3946164.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-a410ff4d.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-263c88ec.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module custom</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../i3status_rs/index.html">i3status_<wbr>rs</a><span class="version">0.35.0</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module custom</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#configuration" title="Configuration">Configuration</a></li><li><a href="#examples" title="Examples">Examples</a></li><li><a href="#todo" title="TODO:">TODO:</a></li></ul><h3><a href="#structs">Module Items</a></h3><ul class="block"><li><a href="#structs" title="Structs">Structs</a></li><li><a href="#functions" title="Functions">Functions</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In i3status_<wbr>rs::<wbr>blocks</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">i3status_rs</a>::<wbr><a href="../index.html">blocks</a></div><h1>Module <span>custom</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/i3status_rs/blocks/custom.rs.html#1-297">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>The output of a custom shell command</p>
+<p>For further customisation, use the <code>json</code> option and have the shell command output valid JSON in the schema below:</p>
+<div class="example-wrap"><pre class="language-json"><code>{&quot;icon&quot;: &quot;...&quot;, &quot;state&quot;: &quot;...&quot;, &quot;text&quot;: &quot;...&quot;, &quot;short_text&quot;: &quot;...&quot;}</code></pre></div>
+<p><code>icon</code> is optional (default “”)
+<code>state</code> is optional, it may be Idle, Info, Good, Warning, Critical (default Idle)
+<code>short_text</code> is optional.</p>
+<h2 id="configuration"><a class="doc-anchor" href="#configuration">§</a>Configuration</h2><div><table><thead><tr><th>Key</th><th>Values</th><th>Default</th></tr></thead><tbody>
+<tr><td><code>format</code></td><td>A string to customise the output of this block. See below for available placeholders.</td><td><code>"{ $icon|} $text.pango-str() "</code></td></tr>
+<tr><td><code>command</code></td><td>Shell command to execute &amp; display</td><td><code>None</code></td></tr>
+<tr><td><code>persistent</code></td><td>Run command in the background; update display for each output line of the command</td><td><code>false</code></td></tr>
+<tr><td><code>cycle</code></td><td>Commands to execute and change when the button is clicked</td><td><code>None</code></td></tr>
+<tr><td><code>interval</code></td><td>Update interval in seconds (or “once” to update only once)</td><td><code>10</code></td></tr>
+<tr><td><code>json</code></td><td>Use JSON from command output to format the block. If the JSON is not valid, the block will error out.</td><td><code>false</code></td></tr>
+<tr><td><code>watch_files</code></td><td>Watch files to trigger update on file modification. Supports path expansions e.g. <code>~</code>.</td><td><code>None</code></td></tr>
+<tr><td><code>hide_when_empty</code></td><td>Hides the block when the command output (or json text field) is empty</td><td><code>false</code></td></tr>
+<tr><td><code>shell</code></td><td>Specify the shell to use when running commands</td><td><code>$SHELL</code> if set, otherwise fallback to <code>sh</code></td></tr>
+</tbody></table>
+</div><div><table><thead><tr><th>Placeholder</th><th>Value</th><th>Type</th><th>Unit</th></tr></thead><tbody>
+<tr><td><code>icon</code></td><td>Value of icon field from JSON output when it’s non-empty</td><td>Icon</td><td>-</td></tr>
+<tr><td><code>text</code></td><td>Output of the script or text field from JSON output</td><td>Text</td><td></td></tr>
+<tr><td><code>short_text</code></td><td>short_text field from JSON output</td><td>Text</td><td></td></tr>
+</tbody></table>
+</div><div><table><thead><tr><th>Action</th><th>Default button</th></tr></thead><tbody>
+<tr><td><code>cycle</code></td><td>Left</td></tr>
+</tbody></table>
+</div><h2 id="examples"><a class="doc-anchor" href="#examples">§</a>Examples</h2>
+<p>Display temperature, update every 10 seconds:</p>
+<div class="example-wrap"><pre class="language-toml"><code>[[block]]
+block = &quot;custom&quot;
+command = &#39;&#39;&#39; cat /sys/class/thermal/thermal_zone0/temp | awk &#39;{printf(&quot;%.1f\n&quot;,$1/1000)}&#39; &#39;&#39;&#39;</code></pre></div>
+<p>Cycle between “ON” and “OFF”, update every 1 second, run next cycle command when block is clicked:</p>
+<div class="example-wrap"><pre class="language-toml"><code>[[block]]
+block = &quot;custom&quot;
+cycle = [&quot;echo ON&quot;, &quot;echo OFF&quot;]
+interval = 1
+[[block.click]]
+button = &quot;left&quot;
+action = &quot;cycle&quot;</code></pre></div>
+<p>Use JSON output:</p>
+<div class="example-wrap"><pre class="language-toml"><code>[[block]]
+block = &quot;custom&quot;
+command = &quot;echo &#39;{\&quot;icon\&quot;:\&quot;weather_thunder\&quot;,\&quot;state\&quot;:\&quot;Critical\&quot;, \&quot;text\&quot;: \&quot;Danger!\&quot;}&#39;&quot;
+json = true</code></pre></div>
+<p>Display kernel, update the block only once:</p>
+<div class="example-wrap"><pre class="language-toml"><code>[[block]]
+block = &quot;custom&quot;
+command = &quot;uname -r&quot;
+interval = &quot;once&quot;</code></pre></div>
+<p>Display the screen brightness on an intel machine and update this only when <code>pkill -SIGRTMIN+4 i3status-rs</code> is called:</p>
+<div class="example-wrap"><pre class="language-toml"><code>[[block]]
+block = &quot;custom&quot;
+command = &#39;&#39;&#39; cat /sys/class/backlight/intel_backlight/brightness | awk &#39;{print $1}&#39; &#39;&#39;&#39;
+signal = 4
+interval = &quot;once&quot;</code></pre></div>
+<p>Update block when one or more specified files are modified:</p>
+<div class="example-wrap"><pre class="language-toml"><code>[[block]]
+block = &quot;custom&quot;
+command = &quot;cat custom_status&quot;
+watch_files = [&quot;custom_status&quot;]
+interval = &quot;once&quot;</code></pre></div><h2 id="todo"><a class="doc-anchor" href="#todo">§</a>TODO:</h2>
+<ul>
+<li>Use <code>shellexpand</code></li>
+</ul>
+</div></details><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.Config.html" title="struct i3status_rs::blocks::custom::Config">Config</a></dt></dl><h2 id="functions" class="section-header">Functions<a href="#functions" class="anchor">§</a></h2><dl class="item-table"><dt><a class="fn" href="fn.run.html" title="fn i3status_rs::blocks::custom::run">run</a></dt></dl></section></div></main></body></html>

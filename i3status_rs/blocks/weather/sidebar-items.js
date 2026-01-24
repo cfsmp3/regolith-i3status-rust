@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["WeatherService"],"fn":["run"],"mod":["met_no","nws","open_weather_map"],"struct":["Config"]};

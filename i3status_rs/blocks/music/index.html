@@ -1,0 +1,111 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="The current song title and artist"><title>i3status_rs::blocks::music - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-ca0dd0c4.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="i3status_rs" data-themes="" data-resource-suffix="" data-rustdoc-version="1.93.0 (254b59607 2026-01-19)" data-channel="1.93.0" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-a3946164.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-a410ff4d.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-263c88ec.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module music</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../i3status_rs/index.html">i3status_<wbr>rs</a><span class="version">0.35.0</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module music</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#configuration" title="Configuration">Configuration</a></li><li><a href="#examples" title="Examples">Examples</a></li><li><a href="#icons-used" title="Icons Used">Icons Used</a></li></ul><h3><a href="#structs">Module Items</a></h3><ul class="block"><li><a href="#structs" title="Structs">Structs</a></li><li><a href="#enums" title="Enums">Enums</a></li><li><a href="#functions" title="Functions">Functions</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In i3status_<wbr>rs::<wbr>blocks</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">i3status_rs</a>::<wbr><a href="../index.html">blocks</a></div><h1>Module <span>music</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/i3status_rs/blocks/music.rs.html#1-702">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>The current song title and artist</p>
+<p>Also provides buttons for play/pause, previous and next.</p>
+<p>Supports all music players that implement the <a href="https://specifications.freedesktop.org/mpris-spec/latest/Player_Interface.html">MediaPlayer2 Interface</a>. This includes:</p>
+<ul>
+<li>Spotify</li>
+<li>VLC</li>
+<li>mpd (via <a href="https://github.com/eonpatapon/mpDris2">mpDris2</a>)</li>
+</ul>
+<p>and many others.</p>
+<p>By default the block tracks all players available on the MPRIS bus. Right clicking on the block
+will cycle it to the next player. You can pin the widget to a given player via the “player”
+setting.</p>
+<h2 id="configuration"><a class="doc-anchor" href="#configuration">§</a>Configuration</h2><div><table><thead><tr><th>Key</th><th>Values</th><th>Default</th></tr></thead><tbody>
+<tr><td><code>format</code></td><td>A string to customise the output of this block. See below for available placeholders.</td><td><code>" $icon {$combo.str(max_w:25,rot_interval:0.5) $play |}"</code></td></tr>
+<tr><td><code>format_alt</code></td><td>If set, block will switch between <code>format</code> and <code>format_alt</code> on every click</td><td><code>None</code></td></tr>
+<tr><td><code>player</code></td><td>Name(s) of the music player(s) MPRIS interface. This can be either a music player name or an array of music player names. Run <code>busctl --user list | grep "org.mpris.MediaPlayer2." | cut -d' ' -f1</code> and the name is the part after “org.mpris.MediaPlayer2.”.</td><td><code>None</code></td></tr>
+<tr><td><code>interface_name_exclude</code></td><td>A list of regex patterns for player MPRIS interface names to ignore.</td><td><code>["playerctld"]</code></td></tr>
+<tr><td><code>separator</code></td><td>String to insert between artist and title.</td><td><code>" - "</code></td></tr>
+<tr><td><code>seek_step_secs</code></td><td>Positive number of seconds to seek forward/backward when scrolling on the bar. Does not need to be an integer.</td><td><code>1</code></td></tr>
+<tr><td><code>seek_forward_step_secs</code></td><td>Positive number of seconds to seek forward when scrolling on the bar. Does not need to be an integer.</td><td><code>seek_step_secs</code></td></tr>
+<tr><td><code>seek_backward_step_secs</code></td><td>Positive number of seconds to seek backward when scrolling on the bar. Does not need to be an integer.</td><td><code>seek_step_secs</code></td></tr>
+<tr><td><code>volume_step</code></td><td>The percent volume level is increased/decreased for the selected audio device when scrolling. Capped automatically at 50.</td><td><code>5</code></td></tr>
+</tbody></table>
+</div>
+<p>Note: All placeholders except <code>icon</code> can be absent. See the examples below to learn how to handle this.</p>
+<div><table><thead><tr><th>Placeholder</th><th>Value</th><th>Type</th></tr></thead><tbody>
+<tr><td><code>icon</code></td><td>A static icon</td><td>Icon</td></tr>
+<tr><td><code>artist</code></td><td>Current artist</td><td>Text</td></tr>
+<tr><td><code>title</code></td><td>Current title</td><td>Text</td></tr>
+<tr><td><code>url</code></td><td>Current song url</td><td>Text</td></tr>
+<tr><td><code>combo</code></td><td>Resolves to “<code>$artist[sep]$title"</code>, <code>"$artist"</code>, <code>"$title"</code>, or <code>"$url"</code> depending on what information is available. <code>[sep]</code> is set by <code>separator</code> option.</td><td>Text</td></tr>
+<tr><td><code>player</code></td><td>Name of the current player (taken from the last part of its MPRIS bus name)</td><td>Text</td></tr>
+<tr><td><code>avail</code></td><td>Total number of players available to switch between</td><td>Number</td></tr>
+<tr><td><code>cur</code></td><td>The current player index of the available players</td><td>Number</td></tr>
+<tr><td><code>play</code></td><td>Play/Pause button</td><td>Clickable icon</td></tr>
+<tr><td><code>next</code></td><td>Next button</td><td>Clickable icon</td></tr>
+<tr><td><code>prev</code></td><td>Previous button</td><td>Clickable icon</td></tr>
+<tr><td><code>volume_icon</code></td><td>Icon based on volume. Missing if unsupported.</td><td>Icon</td></tr>
+<tr><td><code>volume</code></td><td>Current volume. Missing if muted or unsupported.</td><td>Number</td></tr>
+</tbody></table>
+</div><div><table><thead><tr><th>Widget</th><th>Placeholder</th></tr></thead><tbody>
+<tr><td><code>play_pause_btn</code></td><td><code>$play</code></td></tr>
+<tr><td><code>next_btn</code></td><td><code>$next</code></td></tr>
+<tr><td><code>prev_btn</code></td><td><code>$prev</code></td></tr>
+</tbody></table>
+</div><div><table><thead><tr><th>Action</th><th>Default button</th></tr></thead><tbody>
+<tr><td><code>play_pause</code></td><td>Left on <code>play_pause_btn</code></td></tr>
+<tr><td><code>next</code></td><td>Left on <code>next_btn</code></td></tr>
+<tr><td><code>prev</code></td><td>Left on <code>prev_btn</code></td></tr>
+<tr><td><code>next_player</code></td><td>Right</td></tr>
+<tr><td><code>seek_forward</code></td><td>Wheel Up</td></tr>
+<tr><td><code>seek_backward</code></td><td>Wheel Down</td></tr>
+<tr><td><code>volume_up</code></td><td>-</td></tr>
+<tr><td><code>volume_down</code></td><td>-</td></tr>
+<tr><td><code>toggle_format</code></td><td>Left</td></tr>
+</tbody></table>
+</div><h2 id="examples"><a class="doc-anchor" href="#examples">§</a>Examples</h2>
+<p>Show the currently playing song on Spotify only, with play &amp; next buttons and limit the width
+to 20 characters:</p>
+<div class="example-wrap"><pre class="language-toml"><code>[[block]]
+block = &quot;music&quot;
+format = &quot; $icon {$combo.str(max_w:20) $play $next |}&quot;
+player = &quot;spotify&quot;</code></pre></div>
+<p>Same thing for any compatible player, takes the first active on the bus, but ignores “mpd” or anything with “kdeconnect” in the name:</p>
+<div class="example-wrap"><pre class="language-toml"><code>[[block]]
+block = &quot;music&quot;
+format = &quot; $icon {$combo.str(max_w:20) $play $next |}&quot;
+interface_name_exclude = [&quot;.*kdeconnect.*&quot;, &quot;mpd&quot;]</code></pre></div>
+<p>Same as above, but displays with rotating text</p>
+<div class="example-wrap"><pre class="language-toml"><code>[[block]]
+block = &quot;music&quot;
+format = &quot; $icon {$combo.str(max_w:20,rot_interval:0.5) $play $next |}&quot;
+interface_name_exclude = [&quot;.*kdeconnect.*&quot;, &quot;mpd&quot;]</code></pre></div>
+<p>Click anywhere to play/pause, middle click to toggle format:</p>
+<div class="example-wrap"><pre class="language-toml"><code>[[block]]
+block = &quot;music&quot;
+format = &quot; format 1 &quot;
+format_alt = &quot; format 2 &quot;
+[[block.click]]
+button = &quot;left&quot;
+action = &quot;play_pause&quot;
+[[block.click]]
+button = &quot;middle&quot;
+widget = &quot;.&quot;
+action = &quot;toggle_format&quot;</code></pre></div>
+<p>Scroll to change the player volume, use the forward and back buttons to seek:</p>
+<div class="example-wrap"><pre class="language-toml"><code>[[block]]
+block = &quot;music&quot;
+format = &quot; $icon $volume_icon $combo $play $next| &quot;
+seek_step_secs = 10
+[[block.click]]
+button = &quot;up&quot;
+action = &quot;volume_up&quot;
+[[block.click]]
+button = &quot;down&quot;
+action = &quot;volume_down&quot;
+[[block.click]]
+button = &quot;forward&quot;
+action = &quot;seek_forward&quot;
+[[block.click]]
+button = &quot;back&quot;
+action = &quot;seek_backward&quot;</code></pre></div><h2 id="icons-used"><a class="doc-anchor" href="#icons-used">§</a>Icons Used</h2>
+<ul>
+<li><code>music</code></li>
+<li><code>music_next</code></li>
+<li><code>music_play</code></li>
+<li><code>music_prev</code></li>
+<li><code>volume_muted</code></li>
+<li><code>volume</code> (as a progression)</li>
+</ul>
+</div></details><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.Config.html" title="struct i3status_rs::blocks::music::Config">Config</a></dt></dl><h2 id="enums" class="section-header">Enums<a href="#enums" class="anchor">§</a></h2><dl class="item-table"><dt><a class="enum" href="enum.PlayerName.html" title="enum i3status_rs::blocks::music::PlayerName">Player<wbr>Name</a></dt></dl><h2 id="functions" class="section-header">Functions<a href="#functions" class="anchor">§</a></h2><dl class="item-table"><dt><a class="fn" href="fn.run.html" title="fn i3status_rs::blocks::music::run">run</a></dt></dl></section></div></main></body></html>
