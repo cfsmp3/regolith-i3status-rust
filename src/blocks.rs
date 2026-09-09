@@ -175,6 +175,7 @@ define_blocks!(
     battery,
     bluetooth,
     calendar,
+    calfeed,
     cpu,
     custom,
     custom_dbus,
