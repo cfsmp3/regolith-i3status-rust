@@ -30,6 +30,7 @@ pub mod pipewire;
 pub mod protocol;
 mod signals;
 mod subprocess;
+pub mod term_graphics;
 pub mod themes;
 pub mod widget;
 mod wrappers;
@@ -126,6 +127,9 @@ pub struct CliArgs {
     /// glyphs with its own fonts, which may not be the bar's
     #[clap(long = "noicons", requires = "doctor")]
     pub doctor_noicons: bool,
+    /// Experiment: report which image protocols this terminal supports
+    #[clap(hide = true, long = "doctor-probe-terminal")]
+    pub doctor_probe_terminal: bool,
     /// Internal: run one block's live test in this process (spawned by
     /// --doctor for process isolation)
     #[clap(hide = true, long = "doctor-worker")]

@@ -26,6 +26,11 @@ fn main() {
         std::process::exit(0);
     }
 
+    if args.doctor_probe_terminal {
+        i3status_rs::term_graphics::run_probe();
+        std::process::exit(0);
+    }
+
     if args.doctor {
         let display = if args.doctor_noicons {
             i3status_rs::doctor::IconDisplay::Names
